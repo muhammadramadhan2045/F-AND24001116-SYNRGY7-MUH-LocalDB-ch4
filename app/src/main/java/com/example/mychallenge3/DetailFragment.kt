@@ -32,7 +32,7 @@ class DetailFragment : Fragment() {
         val args: DetailFragmentArgs by navArgs()
         val place = args.data
 
-        binding.textDetail.text = place.name
+        binding.textDetail.text = place?.name ?: "No Name"
     }
 
     override fun onDestroyView() {

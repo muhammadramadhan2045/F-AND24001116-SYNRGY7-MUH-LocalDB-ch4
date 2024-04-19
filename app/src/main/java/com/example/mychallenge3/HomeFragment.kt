@@ -74,7 +74,9 @@ class HomeFragment : Fragment() {
 
         listPlaceAdapter.setOnItemClickCallback(object : ListPlaceAdapter.OnItemClickCallback{
             override fun onItemClicked(data: Place) {
-
+                val toDetailFragment = HomeFragmentDirections.actionHomeFragmentToDetailFragment()
+                toDetailFragment.data = data
+                view?.findNavController()?.navigate(toDetailFragment)
             }
 
 

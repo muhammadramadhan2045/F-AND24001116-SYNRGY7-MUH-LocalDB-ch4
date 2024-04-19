@@ -15,6 +15,7 @@
             app:destination="@id/detailFragment">
             <argument
                 android:name="place"
+                android:defaultValue="@null"
                 app:nullable="true"
                 app:argType="com.example.mychallenge3.data.Place" />
         </action>
@@ -29,6 +30,7 @@
         tools:layout="@layout/fragment_detail" >
         <argument
             android:name="data"
+            android:defaultValue="@null"
             app:nullable="true"
             app:argType="com.example.mychallenge3.data.Place" />
     </fragment>
