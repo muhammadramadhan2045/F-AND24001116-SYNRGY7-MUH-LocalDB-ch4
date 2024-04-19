@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mychallenge3.HomeFragmentDirections
@@ -23,6 +23,11 @@ class HomeFragment : Fragment() {
     private val placeList = ArrayList<Place>()
 
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        placeList.addAll(getListPlaces())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,9 +47,7 @@ class HomeFragment : Fragment() {
         rvPlace.setHasFixedSize(true)
 
 
-        placeList.addAll(getListPlaces())
         showRecyclerList()
-
 
     }
 
@@ -53,13 +56,15 @@ class HomeFragment : Fragment() {
         val dataDescription = resources.getStringArray(R.array.data_description)
         val dataPhoto = resources.getStringArray(R.array.data_photo)
         val listPlace = ArrayList<Place>()
-        for (i in dataName.indices){
-            val place = Place(
-                dataName[i],
-                dataDescription[i],
-                dataPhoto[i]
-            )
-            listPlace.add(place)
+        while (listPlace.size < dataName.size){
+            for (position in dataName.indices){
+                val place = Place(
+                    dataName[position],
+                    dataDescription[position],
+                    dataPhoto[position]
+                )
+                listPlace.add(place)
+            }
         }
 
         return listPlace
@@ -75,8 +80,10 @@ class HomeFragment : Fragment() {
         listPlaceAdapter.setOnItemClickCallback(object : ListPlaceAdapter.OnItemClickCallback{
             override fun onItemClicked(data: Place) {
                 val toDetailFragment = HomeFragmentDirections.actionHomeFragmentToDetailFragment()
-                toDetailFragment.data = data
-                view?.findNavController()?.navigate(toDetailFragment)
+                toDetailFragment.name = data.name
+                toDetailFragment.description = data.description
+                toDetailFragment.image = data.image
+                findNavController().navigate(toDetailFragment)
             }
 
 
@@ -84,6 +91,10 @@ class HomeFragment : Fragment() {
     }
 
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
