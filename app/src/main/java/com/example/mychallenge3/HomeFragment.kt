@@ -1,12 +1,17 @@
 package com.example.mychallenge3
 
 import android.os.Bundle
+import android.view.ContextMenu
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mychallenge3.HomeFragmentDirections
@@ -25,8 +30,27 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setHasOptionsMenu(true)
         placeList.addAll(getListPlaces())
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_main, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_list->{
+                //recyclerView jadi list liear
+                rvPlace.layoutManager = LinearLayoutManager(context)
+            }
+            R.id.action_grid-> {
+                //recyclerView jadi grid
+                rvPlace.layoutManager = GridLayoutManager(context, 2)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreateView(

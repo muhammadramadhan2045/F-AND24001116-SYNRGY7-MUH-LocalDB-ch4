@@ -1,10 +1,14 @@
     package com.example.mychallenge3
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.mychallenge3.databinding.ActivityMainBinding
 
     class MainActivity : AppCompatActivity() {
@@ -22,6 +26,10 @@ import com.example.mychallenge3.databinding.ActivityMainBinding
             insets
         }
 
-
     }
+
+
+
+
+
 }

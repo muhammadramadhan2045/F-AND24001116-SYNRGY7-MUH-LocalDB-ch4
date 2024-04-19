@@ -6,6 +6,8 @@
     <string name="desc_fragment">desc</string>
     <string name="image">image</string>
     <string name="go_to_browser">Go to Browser</string>
+    <string name="list">Linear Layout</string>
+    <string name="grid">Grid Layout</string>
 
 
     <string-array name="data_name">
