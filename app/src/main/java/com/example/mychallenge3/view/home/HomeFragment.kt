@@ -1,7 +1,6 @@
-package com.example.mychallenge3
+package com.example.mychallenge3.view.home
 
 import android.os.Bundle
-import android.view.ContextMenu
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -9,23 +8,31 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mychallenge3.HomeFragmentDirections
+import com.example.mychallenge3.R
 import com.example.mychallenge3.adapter.ListPlaceAdapter
-import com.example.mychallenge3.data.Place
+import com.example.mychallenge3.data.model.Place
 import com.example.mychallenge3.databinding.FragmentHomeBinding
+import com.example.mychallenge3.view.ViewModelFactory
+
 
 class HomeFragment : Fragment() {
+
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var rvPlace: RecyclerView
     private val placeList = ArrayList<Place>()
+
+    private val homeViewModel: HomeViewModel by viewModels {
+        ViewModelFactory.getInstance(requireContext())
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,11 +48,11 @@ class HomeFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_list->{
+            R.id.action_list ->{
                 //recyclerView jadi list liear
                 rvPlace.layoutManager = LinearLayoutManager(context)
             }
-            R.id.action_grid-> {
+            R.id.action_grid -> {
                 //recyclerView jadi grid
                 rvPlace.layoutManager = GridLayoutManager(context, 2)
             }
@@ -69,29 +76,12 @@ class HomeFragment : Fragment() {
 
         rvPlace = binding.rvPlace
         rvPlace.setHasFixedSize(true)
-
-
         showRecyclerList()
 
     }
 
     private fun getListPlaces():ArrayList<Place>{
-        val dataName = resources.getStringArray(R.array.data_name)
-        val dataDescription = resources.getStringArray(R.array.data_description)
-        val dataPhoto = resources.getStringArray(R.array.data_photo)
-        val listPlace = ArrayList<Place>()
-        while (listPlace.size < dataName.size){
-            for (position in dataName.indices){
-                val place = Place(
-                    dataName[position],
-                    dataDescription[position],
-                    dataPhoto[position]
-                )
-                listPlace.add(place)
-            }
-        }
-
-        return listPlace
+        return homeViewModel.places.value ?: arrayListOf()
     }
 
     private fun showRecyclerList() {

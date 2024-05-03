@@ -7,10 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.bumptech.glide.Glide
 import com.example.mychallenge3.R
-import com.example.mychallenge3.data.Place
+import com.example.mychallenge3.data.model.Place
 
 class ListPlaceAdapter (private val listPlace: ArrayList<Place>) : RecyclerView.Adapter<ListPlaceAdapter.ListViewHolder>(){
 

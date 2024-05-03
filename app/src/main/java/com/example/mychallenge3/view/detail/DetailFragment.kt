@@ -1,4 +1,4 @@
-package com.example.mychallenge3
+package com.example.mychallenge3.view.detail
 
 import android.content.Intent
 import android.net.Uri
@@ -33,9 +33,9 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val name = DetailFragmentArgs.fromBundle(arguments as Bundle).name
-        val description = DetailFragmentArgs.fromBundle(arguments as Bundle).description
-        val image = DetailFragmentArgs.fromBundle(arguments as Bundle).image
+        val name = com.example.mychallenge3.view.detail.DetailFragmentArgs.fromBundle(arguments as Bundle).name
+        val description = com.example.mychallenge3.view.detail.DetailFragmentArgs.fromBundle(arguments as Bundle).description
+        val image = com.example.mychallenge3.view.detail.DetailFragmentArgs.fromBundle(arguments as Bundle).image
 
         binding.textDetail.text = name
 
