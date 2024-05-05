@@ -42,7 +42,6 @@ class ListPlaceAdapter (private val listPlace: ArrayList<Place>) : RecyclerView.
         holder.tvName.text=name
         holder.tvDescription.text=description
         holder.itemView.setOnClickListener(){
-            Toast.makeText(holder.itemView.context,"Kamu memilih "+listPlace[holder.adapterPosition].name,Toast.LENGTH_SHORT).show()
             onItemClickCallback.onItemClicked(listPlace[holder.adapterPosition])
 
         }

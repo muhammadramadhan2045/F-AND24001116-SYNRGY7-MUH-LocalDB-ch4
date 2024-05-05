@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mychallenge3.data.di.Injection
 import com.example.mychallenge3.data.repository.PlaceRepository
+import com.example.mychallenge3.view.detail.DetailViewModel
+import com.example.mychallenge3.view.favorite.FavoriteViewModel
 import com.example.mychallenge3.view.home.HomeViewModel
 
 class ViewModelFactory(private val repository: PlaceRepository) :
@@ -15,6 +17,12 @@ class ViewModelFactory(private val repository: PlaceRepository) :
         return when {
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
+                DetailViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(FavoriteViewModel::class.java) -> {
+                FavoriteViewModel(repository) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyChallenge3</string>
+    <string name="app_name">Wisata Sumbawa</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="detail_fragment">Detail Fragment</string>
@@ -8,6 +8,8 @@
     <string name="go_to_browser">Go to Browser</string>
     <string name="list">Linear Layout</string>
     <string name="grid">Grid Layout</string>
+    <string name="favorite_place_button">favorite_place_button</string>
+    <string name="favorite">Favorite Place</string>
 
 
     <string-array name="data_name">
@@ -37,7 +39,6 @@
         <item>Pantai ai lemak merupakan destinasi wisata yang sangat popular di Sumbawa. Jarak antara Pantai ai lemak dengan Sirkuit MXGP Samota Sumbawa sangat dekat sekitar 1,7 km.  Di Pantai Ai Lemak anda dapat menikmati keindahan alam pantai mulai dari hamparan pasir putih, keindahan bawah laut terumbu karang dan ikan yang sangat indah hingga sunset yang sangat indah. Di pantai ini anda dapat berenang, snorkling, diving dan camping</item>
         <item>Pantai Sandro Pole berada pada Kawasan yang sama dengan pantai ai lemak. Untuk menuju ke pantai ini anda harus me-markir kendaraan di pantai Ai Lemak, kemudian berjalan kaki melewati sebuah bukut yang tidak begitu tinggi sekitar 20 menit. Untuk menuju sandropole dari ai lemak, anda dapat berjalan kaki juga menyusuri pantai yang penuh karang jika air laut sedang surut. Pantai Sandro pole relatif lebih sepi dari pantai ai lemak namun keindahan dan ketenangan nya menjadi daya tarik tersendiri. Di pantai sandro pole anda dapat berenang dipantai, bermain pasi, snorkling dan diving untuk menyaksikan keindahan bawah laut selain itu anda juga bisa camping dan menikmati sunset.</item>
     </string-array>
-
 
 
     <string-array name="data_photo">

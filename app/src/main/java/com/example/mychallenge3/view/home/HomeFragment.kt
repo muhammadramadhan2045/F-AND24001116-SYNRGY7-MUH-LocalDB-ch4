@@ -9,7 +9,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -72,12 +71,22 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        activity?.title = getString(R.string.app_name)
 
         rvPlace = binding.rvPlace
         rvPlace.setHasFixedSize(true)
         showRecyclerList()
 
+
+        goToFavoriteFragment()
+
+    }
+
+    private fun goToFavoriteFragment() {
+        binding.fabGoToFavorite.setOnClickListener {
+            val toFavoriteFragment = HomeFragmentDirections.actionHomeFragmentToFavoriteFragment()
+            findNavController().navigate(toFavoriteFragment)
+        }
     }
 
     private fun getListPlaces():ArrayList<Place>{
