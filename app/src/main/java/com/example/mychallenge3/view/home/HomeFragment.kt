@@ -1,5 +1,6 @@
 package com.example.mychallenge3.view.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import com.example.mychallenge3.adapter.ListPlaceAdapter
 import com.example.mychallenge3.data.model.Place
 import com.example.mychallenge3.databinding.FragmentHomeBinding
 import com.example.mychallenge3.view.ViewModelFactory
+import com.example.mychallenge3.view.login.LoginActivity
 
 
 class HomeFragment : Fragment() {
@@ -54,6 +56,13 @@ class HomeFragment : Fragment() {
             R.id.action_grid -> {
                 //recyclerView jadi grid
                 rvPlace.layoutManager = GridLayoutManager(context, 2)
+            }
+            R.id.action_logout -> {
+                homeViewModel.logout()
+                Intent(activity,LoginActivity::class.java).also {
+                    startActivity(it)
+                    activity?.finish()
+                }
             }
         }
         return super.onOptionsItemSelected(item)

@@ -1,7 +1,9 @@
 package com.example.mychallenge3.data.di
 
 import android.content.Context
+import com.example.mychallenge3.data.pref.UserPreference
 import com.example.mychallenge3.data.repository.PlaceRepository
+import com.example.mychallenge3.data.repository.UserRepository
 import com.example.mychallenge3.data.source.local.PlaceLocalDataSourceImpl
 import com.example.mychallenge3.data.source.local.room.PlaceDatabase
 import com.example.mychallenge3.data.source.remote.PlaceRemoteDataSourceImpl
@@ -12,5 +14,10 @@ object Injection {
         val remoteDataSource = PlaceRemoteDataSourceImpl(context)
         val localDataSource = PlaceLocalDataSourceImpl(database.placeDao())
         return PlaceRepository(remoteDataSource, localDataSource)
+    }
+
+    fun provideUserRepository(context: Context): UserRepository {
+        val userPreference = UserPreference.getInstance(context)
+        return UserRepository.getInstance(userPreference)
     }
 }

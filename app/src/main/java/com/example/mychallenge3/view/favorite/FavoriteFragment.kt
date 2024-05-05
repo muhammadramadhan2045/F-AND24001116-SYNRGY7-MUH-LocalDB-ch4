@@ -68,8 +68,20 @@ class FavoriteFragment : Fragment() {
             listPlaceAdapter.notifyDataSetChanged()
         }
 
+
+        favoriteViewModel.loading.observe(viewLifecycleOwner) { loading ->
+            Log.d("FavoriteFragment", "loading: $loading")
+            // Show loading indicator
+            if (loading) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
+            }
+        }
         // Load data from ViewModel
         favoriteViewModel.getPlacesFromLocal()
+
+
 
         // Set item click listener
         listPlaceAdapter.setOnItemClickCallback(object : ListPlaceAdapter.OnItemClickCallback {
